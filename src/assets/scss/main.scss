@@ -1,0 +1,27 @@
+@import "./color.scss";
+@import "./fonts.scss";
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+body {
+  background-position: center center;
+  color: $color-text;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  width: 100%;
+}
+  
+#app {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+.modal-backdrop {
+  background: rgba($bg_black, 0.3);
+}

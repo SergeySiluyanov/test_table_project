@@ -6,7 +6,7 @@ const Api = {
   async get(...params) {
     try {
       return Promise.resolve({ data: true });
-      return axios.get(...params);
+      // return axios.get(...params);
     } catch (err) {
       console.error(err);
     }
@@ -14,7 +14,7 @@ const Api = {
   async post(...params) {
     try {
       return Promise.resolve({ data: true });
-      return axios.post(...params);
+      // return axios.post(...params);
     } catch (err) {
       console.error(err);
     }
@@ -22,7 +22,7 @@ const Api = {
   async put(...params) {
     try {
       return Promise.resolve({ data: true });
-      return axios.put(...params);
+      // return axios.put(...params);
     } catch (err) {
       console.error(err);
     }
@@ -30,7 +30,7 @@ const Api = {
   async delete(...params) {
     try {
       return Promise.resolve({ data: true });
-      return axios.delete(...params);
+      // return axios.delete(...params);
     } catch (err) {
       console.error(err);
     }
@@ -71,6 +71,7 @@ export default new Vuex.Store({
   state: {
     tables: {
       "1": {
+        name: "Таблица 1",
         id: 1,
         size: [20, 20],
         data: {
@@ -80,6 +81,7 @@ export default new Vuex.Store({
         }
       },
       "2": {
+        name: "Таблица 2",
         id: 2,
         size: [15, 10],
         data: {
@@ -199,7 +201,7 @@ export default new Vuex.Store({
       return data;
     },
     async 'column/add'({ commit, getters }, tableId) {
-      const table = getters['table/itemById'](id);
+      const table = getters['table/itemById'](tableId);
       const { data } = await Api.post(`/api/v1/row/${tableId}/${table.size[1] + 1}`);
 
       if (data) {
