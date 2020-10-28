@@ -12,16 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/tables',
+    path: '/table/:id',
     name: 'Table',
     component: Table
-    // children: [{
-    //   path: ':id/',
-    //   component: Table,
-    //   props: {
-    //     titleTable: 'id',
-    //   },
-    // }],
   }
 ]
 

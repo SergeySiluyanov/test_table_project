@@ -1,8 +1,5 @@
 <template>
   <div class="table">
-    <ul>
-      <li v-for="table in list" :key="table.id" @click="pickedId = table.id">{{table.id}}</li>
-    </ul>
     <div v-if="currentTable">
       <table>
         <tr v-for="(row, i) in currentTable" :key="i">
@@ -22,16 +19,15 @@ export default {
   name: 'Home',
   components: {
   },
-  data: () => ({
-    pickedId: null,
-  }),
   computed: {
     ...mapGetters({
-      list: 'table/list',
       tableById: 'table/itemById',
     }),
     currentTable() {
       return this.tableById(this.pickedId);
+    },
+    pickedId() {
+      return this.$route.params.id;
     },
   },
   methods: {

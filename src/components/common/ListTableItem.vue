@@ -1,5 +1,5 @@
 <template>
-  <div class="tableItem" @click="pickedId = id">
+  <div class="tableItem" @click="handleClick">
     <span>{{titleTable}}</span>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$router.push(`/tables/${this.id}`);
+      this.$router.push(`/table/${this.id}`);
     }
   }
 }
