@@ -1,6 +1,7 @@
 <template>
   <div class="tableItem" @click="handleClick">
-    <span>{{titleTable}}</span>
+    <span class="tableItem__name">{{titleTable}}</span>
+    <button class="tableItem__delete" @click="deleteTable">Удалить таблицу</button>
   </div>
 </template>
 
@@ -9,11 +10,14 @@ export default {
   name: 'ListTableItem',
   props: {
     titleTable: String,
-    id: String,
+    id: Number,
   },
   methods: {
     handleClick() {
       this.$router.push(`/table/${this.id}`);
+    },
+    deleteTable() {
+      this.$store.dispatch('table/delete', this.id)
     }
   }
 }
@@ -29,6 +33,7 @@ export default {
     border-radius: 4px;
     cursor: pointer;
     display: flex;
+    justify-content: space-between;
     font-weight: 700;
     padding: 10px;
     text-transform: uppercase;
@@ -40,6 +45,10 @@ export default {
       background: $bg_black;
       color: $color_white;
       box-shadow: none;
+    }
+
+    &__delete {
+      border: none;
     }
   }
 </style>

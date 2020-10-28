@@ -25,3 +25,14 @@ body {
 .modal-backdrop {
   background: rgba($bg_black, 0.3);
 }
+
+.table td {
+  border: 1px solid;
+  padding: 0;
+
+  input {
+    border: none;
+    height: 100%;
+    width: 100%;
+  }
+}

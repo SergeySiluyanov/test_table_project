@@ -23,22 +23,42 @@
             <b-form-input
               id="input-1"
               v-model="form.name"
-              type="name"
+              type="text"
               required
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+          
+          <b-form-group
+            id="input-group-2"
+            label="Количество колонок:"
+            label-for="input-2"
+          >
             <b-form-input
               id="input-2"
-              v-model="form.name"
+              v-model="form.column"
+              type="number"
               required
-              placeholder="Enter name"
             ></b-form-input>
           </b-form-group>
+          
+          <b-form-group
+            id="input-group-3"
+            label="Количество строк:"
+            label-for="input-3"
+          >
+            <b-form-input
+              id="input-3"
+              v-model="form.row"
+              type="number"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <div class="btn-block">
+            <b-button type="reset" variant="danger">Отменить</b-button>
+            <b-button type="submit" variant="primary">Сохранить</b-button>
+          </div>
 
-          <b-button type="submit" variant="primary">Сохранить</b-button>
-          <b-button type="reset" variant="danger">Отменить</b-button>
         </b-form>
       </div>
     </b-modal>
@@ -67,14 +87,6 @@ export default {
     ...mapGetters({
       list: 'table/list',
     }),
-    getListTable() {
-      return [
-        {name: 'table1', id: '1'},
-        {name: 'table2', id: '2'},
-        {name: 'table3', id: '3'},
-        {name: 'table4', id: '4'},
-      ]
-    }
   },
   methods: {
     handleClick() {
@@ -82,8 +94,8 @@ export default {
     },
     onSubmit(evt) {
       evt.preventDefault()
+      this.$store.dispatch('table/create', this.form);
       this.$bvModal.hide('added_table')
-      alert(JSON.stringify(this.form))
     },
     onReset(evt) {
       evt.preventDefault()
@@ -111,5 +123,11 @@ export default {
       margin-bottom: 20px;
       width: 100%;
     }
+  }
+
+  .btn-block {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
   }
 </style>

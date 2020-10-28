@@ -151,7 +151,7 @@ export default new Vuex.Store({
 
       return result;
     },
-    async 'table/create'({ dispatch }) {
+    async 'table/create'({ dispatch }, form) {
       const { data } = await Api.post(`/api/v1/table/${userId}`);
       dispatch('table/getList');
       const info = await dispatch('table/getInfo', data.table);
@@ -185,7 +185,7 @@ export default new Vuex.Store({
       return data;
     },
     async 'row/add'({ commit, getters }, tableId) {
-      const table = getters['table/itemById'](id);
+      const table = getters['table/itemById'](tableId);
       const { data } = await Api.post(`/api/v1/row/${tableId}/${table.size[0] + 1}`);
 
       if (data) {
